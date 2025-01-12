@@ -4,8 +4,11 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import { PenBox } from "lucide-react";
 import UserMenu from "./User-menu";
+import { checkUser } from "@/lib/checkUser";
+import UserLoading from "./user-loading";
 
-const Header = () => {
+const Header = async () => {
+  await checkUser();
   return (
     <>
       <header className="container mx-auto">
@@ -29,17 +32,18 @@ const Header = () => {
                 <span>Create Project</span>
               </Button>
             </Link>
-          <SignedOut>
-            <SignInButton forceRedirectUrl="/onboarding">
-              <Button variant="outline">Login</Button>
-            </SignInButton>
-          </SignedOut>
+            <SignedOut>
+              <SignInButton forceRedirectUrl="/onboarding">
+                <Button variant="outline">Login</Button>
+              </SignInButton>
+            </SignedOut>
 
-          <SignedIn>
-            <UserMenu />
-          </SignedIn>
+            <SignedIn>
+              <UserMenu />
+            </SignedIn>
           </div>
         </nav>
+        <UserLoading/>
       </header>
     </>
   )
