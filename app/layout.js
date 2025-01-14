@@ -10,8 +10,8 @@ import { Toaster } from "sonner";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Jira Clone",
-  description: "",
+  title: "pms",
+  description: "Project Management System",
 };
 
 export default function RootLayout({ children }) {
